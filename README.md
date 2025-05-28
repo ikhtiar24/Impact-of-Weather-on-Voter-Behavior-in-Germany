@@ -4,3 +4,7 @@ The results of the project are particularly relevant for future elections. They 
 A higher voter turnout generally leads to more representative election results and can therefore strengthen the population's trust and satisfaction with democratic processes in the long term.
 
 The target group for this work includes election administrators, those responsible for election logistics and political scientists. 
+
+
+
+[CONDUCT.md] (https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
