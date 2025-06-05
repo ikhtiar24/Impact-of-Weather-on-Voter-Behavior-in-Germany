@@ -3,7 +3,10 @@
 We want to analyze what influence weather conditions have on voter turnout in Germany. 
 
 The following UML Activity Diagram shows an abstract description of the data analysis workflow: 
-![Data Analysis Workflow](./ActiveDiagram.png)
+![Active Diagram](./ActiveDiagram.png)
+
+For each node in the activity diagram, the following table lists the  input, output, and implementation (using packages or own implementation).
+![Active Workflow Table](./ActiveWorkflowTable.pdf)
 
 ## Non-Functional Requirements 
 
