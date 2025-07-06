@@ -1,7 +1,4 @@
 venv
-<<<<<<< HEAD
 .snakemake/
-=======
->>>>>>> a84967e781ac12e8eb5d5a91170d9e0dbada8c3f
 .vscode
 __pycache__
