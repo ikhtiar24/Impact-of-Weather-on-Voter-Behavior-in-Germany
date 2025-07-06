@@ -1,0 +1,94 @@
+# Snakefile
+# Located in: your_project_root/workflow/Snakefile
+
+# This rule defines the final desired outputs of the entire workflow.
+# Snakemake will automatically figure out the steps needed to generate these files.
+rule all:
+    input:
+        "data/merged_all.csv",
+        "results/correlation_with_turnout.csv",
+        "results/unusable_weather_factors.csv",
+        "plots/TMK_and_voter_turnout_pct.png",
+        "plots/RSK_and_voter_turnout_pct.png",
+        "plots/SDK_and_voter_turnout_pct.png"
+
+# Rule: merge_data
+# Purpose: Combines weather data from multiple cities with election data.
+# Input: All individual weather CSVs and the election data CSV.
+# Output: A single merged CSV file.
+rule merge_data:
+    input:
+        script = "bin/merge_data.py"
+       # election="data/dataset_election.csv",
+       # weather_berlin="data/dataset_weather_berlin.csv",
+       # weather_hamburg="data/dataset_weather_hamburg.csv",
+        #weather_koeln="data/dataset_weather_köln.csv",
+        #weather_stuttgart="data/dataset_weather_stuttgart.csv",
+       # weather_erfurt="data/dataset_weather_erfurt.csv",
+       # weather_dresden="data/dataset_weather_dresden.csv",
+       # weather_muenchen="data/dataset_weather_münchen.csv"
+    output:
+        "data/merged_all.csv" # This is the output file name
+    shell:
+        # Executes the merge_data.py script.
+        # Assumes 'bin/merge_data.py' has been modified to use '--output' argument.
+        "python {input.script} --output {output}"
+
+
+# Rule: clean_data
+# Purpose: Replaces missing value indicators (-999) with NaN in the merged data.
+# Input: The merged data CSV.
+# Output: A cleaned merged CSV.
+rule clean_data:
+    input:
+        "data/merged_all.csv"
+    output:
+        "data/cleaned_merged_data.csv" # This is the output file name
+    shell:
+        # Executes the clean_missing.py script.
+        "python bin/clean_missing.py --input {input} --output {output}"
+
+# Rule: calculate_correlation
+# Purpose: Calculates the correlation between weather factors and voter turnout.
+# Input: The cleaned merged data CSV.
+# Output: A CSV file containing the calculated correlations.
+rule calculate_correlation:
+    input:
+        "data/cleaned_merged_data.csv"
+    output:
+        "results/correlation_with_turnout.csv" # This is the output file name
+    shell:
+        # Executes the calculate_correlation.py script.
+        "python bin/calculate_correlation.py --input {input} --output {output}"
+
+# Rule: report_unusable_factors
+# Purpose: Identifies and reports weather factors that couldn't be used for correlation.
+# Input: The cleaned merged data CSV.
+# Output: A CSV file listing unusable weather factors.
+rule report_unusable_factors:
+    input:
+        "data/cleaned_merged_data.csv"
+    output:
+        "results/unusable_weather_factors.csv" # This is the output file name
+    shell:
+        # Executes the unusable_weather_factors.py script.
+        "python bin/unusable_weather_factors.py --input {input} --output {output}"
+
+# Rule: visualize_data
+# Purpose: Generates scatter plots showing the relationship between weather and voter turnout.
+# Input: The cleaned merged data CSV.
+# Output: Multiple PNG image files, one for each weather factor.
+rule visualize_data:
+    input:
+        "data/cleaned_merged_data.csv"
+    output:
+        # 'expand' is used here because visualize.py generates multiple files
+        # based on a list of weather factors (TMK, RSK, SDK).
+        expand("plots/{weather_factor}_and_voter_turnout_pct.png", weather_factor=["TMK", "RSK", "SDK"])
+    params:
+        # The visualize.py script expects an output directory, not a specific file name.
+        output_dir="plots/"
+    shell:
+        # Executes the visualize.py script.
+        # The script itself handles creating the 'plots/' directory if it doesn't exist.
+        "python bin/visualize.py --input {input} --output {params.output_dir}"
