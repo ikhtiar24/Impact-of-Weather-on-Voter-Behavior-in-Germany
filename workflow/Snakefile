@@ -1,5 +1,4 @@
 # Snakefile
-# Located in: your_project_root/workflow/Snakefile
 
 # This rule defines the final desired outputs of the entire workflow.
 # Snakemake will automatically figure out the steps needed to generate these files.

@@ -7,12 +7,23 @@ A higher voter turnout generally leads to more representative election results a
 
 The target group for this work includes election administrators, those responsible for election logistics and political scientists. 
 
+# Dataset Overview
+
+We concentrated on two datasets to perform the analysis, and they are as follows:
+
+Election Dataset: The dataset of Bundestag elections based on September 2021, collected from the Germany Atlas. There are 400 rows and 11 columns that contain the territorial code and the name of the territorial unit, such as district name, district ID, voter turnout percentage, etc. Missing values are indicated as -9999.
+
+Source of the data: {https://www.deutschlandatlas.bund.de/DE/Service/Downloads/downloads_node.html}
+
+Local Weather Dataset: Secondly, we gathered the local weather data from the Deutscher Wetterdienst (DWD) website, which provides access to climate data. A variety of climate observation datasets are available on the website. The directory structure within /climate_environment/CDC usually includes subdirectories for several sorts of observations, such as hourly, daily, and monthly. We use daily data, including detailed weather observations obtained on election day (September 26, 2021) in numerous significant German cities. For the analysis, we take seven 7 cities such as Berlin, Dresden, Erfurt, Hamburg, Köln, München, and Stuttgart. 
+
+Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
 
 
 [CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
 
 [CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
-V
+
 # ⚙️ Installation:
 MacOS
 Linux
