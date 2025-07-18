@@ -40,21 +40,22 @@ H4: Even small lokal variations in temperature influence the voter turnout.
 
 ## Project Structure 
 The project is organized as follows:<br>
+<pre> 
 impact-of-weather-on-voter-turnout<br>
 ├── venv/                           # Local Python virtual environment<br>
 ├── bin/                            # Python files containing all code (processing, analysis)<br>
 ├── data/                           # Weather and election data as csv Files<br>
 ├── docs/                           # Planing, workflow, requirements.md (functional and non-functional)<br>
 ├── results/                        # Plots and csv file with correlation values<br>
-├── tests/<br>
-├── workflow                        # Snakefile<br>
+├── tests/                          # Testing Python Code<br> 
+├── workflow                        # Containing Snakefile<br>
 ├── CITATION.cff<br>
 ├── CONDUCT.md<br>
 ├── CONTRIBUTING.md<br>
 ├── LICENSE<br>
 ├── README.md                       # Project overview and usage instructions<br>
 ├── requirements.txt                # Required Python packages<br>
-
+</pre>
 
 
 ## Dataset Overview
@@ -106,7 +107,6 @@ This section will guide you through the installation step by step.
 
 
 ## ⚙️ Install Python and Virtual Environment:
->>>>>>> 15ee78ba7e5be0f391c3cd4bbeff2ce914fbe072 <br>
 MacOS<br>
 Linux<br>
 Windows
