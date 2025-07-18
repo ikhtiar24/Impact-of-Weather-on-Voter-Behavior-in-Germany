@@ -95,6 +95,32 @@ The complete data analysis process was executed using the Snakemake file. Make s
 After successful execution, find the results in the results/ and plots/directories within the project root. 
 
 
+# Requirements:
+
+To run this project, the following requirements must be met:
+
+1. Software: 
+
+Python: The programming language used for all analytic scripts (version 3.x recommended).
+Snakemake: Workflow management system
+Git: For version control and managing the project repository
+
+
+2. Python Libraries:
+
+numpy: For numeric operations
+pandas: For analyzing and manipulating data
+matplotlib: For visualizations.
+scipy.stats: used for statistical functions
+argparse: For handling command-line arguments
+Pulp: An optimization library that Snakemake uses internally
+
+
+3. Hardware:
+
+A typical desktop or laptop computer with enough processing power and RAM to execute Python and Snakemake workflows. 
+
+
 
 [CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
 
