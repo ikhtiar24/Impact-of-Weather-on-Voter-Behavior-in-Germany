@@ -19,11 +19,24 @@ Local Weather Dataset: Secondly, we gathered the local weather data from the Deu
 
 Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
 
-# Research Questions
+# Research Question
 
 Does local weather influence voter turnout in Germany?
 
 
+
+# Interpretation of Results
+
+We carefully examined how three key factors might interact with voter turnout in several German districts:
+
+Average Temperature(TMK): The plots demonstrate that the data points are grouped around a 75–80% voter turnout proportion. The regression line has little slope, while the average temperature on the X-axis shifts from 18.0 to 19.2. This implies that differences in average temperature within the range had a minimal linear effect on voter turnout, as the turnout percentage remained steady. 
+
+Total Rainfall(RSK): The results are nearly identical to the average temperature; the data points for rainfall are spread out 75-80%. Despite rainfall levels ranging from near 0 to 17.5 units, the regression line remains fairly flat. This suggests that there is week relationship between election-day rainfall and voter turnout, despite variations in precipitation amounts. 
+
+Sunshine Hours(SDK): The data point observations for sunshine hours likewise show a steady range of roughly 75–80%. Even though the shunshine hours vary from 2.5 to 9, the regression line shows a flat. This describes the weak linear relationship between the sunshine hours and the election day. 
+
+
+According to the visualization, the important parameters for the German Bundestag Election 2021, such as average temperature, total rainfall, and sunshine hours, are not highly connected with voter turnout. The turnout percentage remained reasonably consistent despite the variations in weather conditions. 
 
 
 [CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
