@@ -14,11 +14,14 @@ The target group for this work includes election administrators, those responsib
 - [Hypotheses](#hypotheses)
 - [Project Structure](#project-structure)
 - [Dataset Overview](#dataset-overview)
+- [Requirements](#requirements)
 - [Installation](#️-installation)
 - [Usage](#usage)
-- [Requirements](#requirements)
-- [Conduct](#conduct)
+- [Run the Workflow](#run-the-workflow)
+- [Interpretation of Results](#interpretation-of-results)
+- [Note: DWD Weather Abbreviation](#note-dwd-weather-abbreviation)
 - [Contributing](#contributing)
+- [Conduct](#conduct)
 - [License](#license)
 - [Citation](#citation)
 - [Contact](#contact-via-gitup)
@@ -38,19 +41,19 @@ H4: Even small lokal variations in temperature influence the voter turnout.
 ## Project Structure 
 The project is organized as follows:<br>
 impact-of-weather-on-voter-turnout<br>
-├── venv/ # Local Python virtual environment<br>
-├── bin/ # Python files containing all code (processing, analysis)<br>
-├── data/ # Weather and election data as csv Files<br>
-├── docs/ # Planing, workflow, requirements.md (functional and non-functional)<br>
-├── results/ # Plots and csv file with correlation values<br>
+├── venv/                           # Local Python virtual environment<br>
+├── bin/                            # Python files containing all code (processing, analysis)<br>
+├── data/                           # Weather and election data as csv Files<br>
+├── docs/                           # Planing, workflow, requirements.md (functional and non-functional)<br>
+├── results/                        # Plots and csv file with correlation values<br>
 ├── tests/<br>
-├── workflow # Snakefile<br>
+├── workflow                        # Snakefile<br>
 ├── CITATION.cff<br>
 ├── CONDUCT.md<br>
 ├── CONTRIBUTING.md<br>
 ├── LICENSE<br>
-├── README.md # Project overview and usage instructions<br>
-├── requirements.txt # Required Python packages<br>
+├── README.md                       # Project overview and usage instructions<br>
+├── requirements.txt                # Required Python packages<br>
 
 
 
@@ -68,34 +71,8 @@ Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
 
 
 
-# Interpretation of Results
 
-We carefully examined how three key factors might interact with voter turnout in several German districts:
-
-Average Temperature(TMK): The plots demonstrate that the data points are grouped around a 75–80% voter turnout proportion. The regression line has little slope, while the average temperature on the X-axis shifts from 18.0 to 19.2. This implies that differences in average temperature within the range had a minimal linear effect on voter turnout, as the turnout percentage remained steady. 
-
-Total Rainfall(RSK): The results are nearly identical to the average temperature; the data points for rainfall are spread out 75-80%. Despite rainfall levels ranging from near 0 to 17.5 units, the regression line remains fairly flat. This suggests that there is week relationship between election-day rainfall and voter turnout, despite variations in precipitation amounts. 
-
-Sunshine Hours(SDK): The data point observations for sunshine hours likewise show a steady range of roughly 75–80%. Even though the shunshine hours vary from 2.5 to 9, the regression line shows a flat. This describes the weak linear relationship between the sunshine hours and the election day. 
-
-
-According to the visualization, the important parameters for the German Bundestag Election 2021, such as average temperature, total rainfall, and sunshine hours, are not highly connected with voter turnout. The turnout percentage remained reasonably consistent despite the variations in weather conditions. 
-
-
-# Run the workflow:
-
-The complete data analysis process was executed using the Snakemake file. Make sure you are in the root directory of the project, which includes bin/, data/, and workflow/.
-
-1. Open the terminal or VS code integrated terminal
-2. Activate the Python/Conda environment where Snakemake and all project dependencies are installed such as numpy, pandas, matplotlib, pulp etc.
-3. Execute the full workflow use this command line: snakemake --snakefile workflow/Snakefile
-4. Execute with multiple CPU cores (for faster processing), use this command line: snakemake --snakefile workflow/Snakefile cores 4 
-
-
-After successful execution, find the results in the results/ and plots/directories within the project root. 
-
-
-# Requirements:
+## Requirements:
 
 To run this project, the following requirements must be met:
 
@@ -118,22 +95,20 @@ Pulp: An optimization library that Snakemake uses internally
 
 3. Hardware:
 
-A typical desktop or laptop computer with enough processing power and RAM to execute Python and Snakemake workflows. 
+A typical desktop or laptop computer with enough processing power and RAM to execute Python and Snakemake workflows.
 
-
-
-[CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
-
-[CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
-
-# ⚙️ Installation:
-=======
+More funcational and non-functional requirements: [requirements.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/docs/requirements.md?ref_type=heads)
 
 
 ## ⚙️ Installation:
->>>>>>> 15ee78ba7e5be0f391c3cd4bbeff2ce914fbe072
-MacOS
-Linux
+To use our software, a few things need to be installed as mentioned above.<br>  
+This section will guide you through the installation step by step.
+
+
+## ⚙️ Install Python and Virtual Environment:
+>>>>>>> 15ee78ba7e5be0f391c3cd4bbeff2ce914fbe072 <br>
+MacOS<br>
+Linux<br>
 Windows
 
 precondition: Python version 3.10 or newer and pip should be available. 
@@ -166,9 +141,10 @@ pip install -r requirements.txt
  
 
 ## Usage
+Below you will find instructions on how to use our tools, including simple descriptions and copy-paste examples you can run directly in your terminal.
 
 ### 1. Read in
-Tool th read in CSV Files and safe them as DataFrames. 
+Tool t0 read CSV Files and safe them as DataFrames. 
 
 Example:
 ```bash
@@ -224,17 +200,44 @@ RSK = Precipitation depth (1 = 1mm = 1l/square meter). <br>
 TMK = Temperature in Celcius. <br>
 SDK = Hours of Sunshine.
 
-## Requirements
-[requirements.md] (https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/docs/requirements.md?ref_type=heads)
 
-## Conduct
-[CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
+## Run the workflow:
+
+The complete data analysis process was executed using the Snakemake file. Make sure you are in the root directory of the project, which includes bin/, data/, and workflow/.
+
+1. Open the terminal or VS code integrated terminal
+2. Activate the Python/Conda environment where Snakemake and all project dependencies are installed such as numpy, pandas, matplotlib, pulp etc.
+3. Execute the full workflow use this command line: snakemake --snakefile workflow/Snakefile
+4. Execute with multiple CPU cores (for faster processing), use this command line: snakemake --snakefile workflow/Snakefile cores 4 
+
+
+After successful execution, find the results in the results/ and plots/directories within the project root. 
+
+
+## Interpretation of Results
+
+We carefully examined how three key factors might interact with voter turnout in several German districts:
+
+Average Temperature(TMK): The plots demonstrate that the data points are grouped around a 75–80% voter turnout proportion. The regression line has little slope, while the average temperature on the X-axis shifts from 18.0 to 19.2. This implies that differences in average temperature within the range had a minimal linear effect on voter turnout, as the turnout percentage remained steady. 
+
+Total Rainfall(RSK): The results are nearly identical to the average temperature; the data points for rainfall are spread out 75-80%. Despite rainfall levels ranging from near 0 to 17.5 units, the regression line remains fairly flat. This suggests that there is weak relationship between election-day rainfall and voter turnout, despite variations in precipitation amounts. 
+
+Sunshine Hours(SDK): The data point observations for sunshine hours likewise show a steady range of roughly 75–80%. Even though the sunshine hours vary from 2.5 to 9, the regression line shows a flat. This describes the weak linear relationship between the sunshine hours and the election day. 
+
+
+According to the visualization, the important parameters for the German Bundestag Election 2021, such as average temperature, total rainfall, and sunshine hours, are not highly connected with voter turnout. The turnout percentage remained reasonably consistent despite the variations in weather conditions. 
+
+
 
 ## Contributing
 [CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
 
+## Conduct
+[CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
+
+
 ## License
-[LICENSE] (https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/LICENSE?ref_type=heads)
+[LICENSE](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/LICENSE?ref_type=heads)
 
 ## Citation 
 [CITATION.cff](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CITATION.cff?ref_type=heads) 
