@@ -37,4 +37,3 @@ def test_constant_values_corr():
     assert pd.isna(corr4) or corr4 == 0
 
 
-# pytest tests/test_calculate_correlation.py

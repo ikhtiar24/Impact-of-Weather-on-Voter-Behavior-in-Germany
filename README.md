@@ -7,6 +7,17 @@ A higher voter turnout generally leads to more representative election results a
 
 The target group for this work includes election administrators, those responsible for election logistics and political scientists. 
 
+# Research Questions
+
+Does local weather influence voter turnout in Germany?
+Are certain weather variables (e.g. temperature, rain, sunshine) more strongly correlated with turnout?
+
+## Hypothesis:
+H1: There is a correlation between the weather and the voter turnout. 
+H2: Higher rainfall on election day lower the voter turnout. 
+H3: More sunshine hours has a positive effect on the voter turnout.
+H4: Even small lokal variations in temperature influence the voter turnout. 
+
 # Dataset Overview
 
 We concentrated on two datasets to perform the analysis, and they are as follows:
@@ -18,12 +29,6 @@ Source of the data: {https://www.deutschlandatlas.bund.de/DE/Service/Downloads/d
 Local Weather Dataset: Secondly, we gathered the local weather data from the Deutscher Wetterdienst (DWD) website, which provides access to climate data. A variety of climate observation datasets are available on the website. The directory structure within /climate_environment/CDC usually includes subdirectories for several sorts of observations, such as hourly, daily, and monthly. We use daily data, including detailed weather observations obtained on election day (September 26, 2021) in numerous significant German cities. For the analysis, we take seven 7 cities such as Berlin, Dresden, Erfurt, Hamburg, Köln, München, and Stuttgart. 
 
 Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
-
-# Research Questions
-
-Does local weather influence voter turnout in Germany?
-
-
 
 
 [CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "This is a CFF file for the project 'Impact of weather on voter behavior in Germany. If you use this project, please cite it as described below."
+title: "Impact of weather on voter behavior in Germany"
+authors:
+  - family-names: "Hartmann"
+    given-names: "Annegret"
+    affiliation: "University of Potsdam"
+
+  - family-names: "Ikhtiar"
+    given-names: "Ahmed"
+    affiliation: "University of Potsdam"
+  
+  - family-names: "Trendelenburg"
+    given-names: "Caroline"
+    affiliation: "University of Potsdam"
+repository-code: https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany
+license: CC-BY-SA-4.0
