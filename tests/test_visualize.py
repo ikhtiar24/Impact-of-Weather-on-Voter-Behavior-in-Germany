@@ -29,4 +29,3 @@ def test_empty_data(tmp_path):
     with pytest.raises(ValueError, match="No usable data available"):
         visualize(df, "TMK", "voter_turnout_pct", tmp_path)
 
-# pytest tests/visualize.py

@@ -54,6 +54,6 @@ def test_missing_target():
     with pytest.raises(ValueError, match="Target column 'target' is missing"):
         relevant_columns(df5, ["TMK", "RSK"], "target")   
 
-# pytest tests/test_unusable_weather_factors.py
+
 
 

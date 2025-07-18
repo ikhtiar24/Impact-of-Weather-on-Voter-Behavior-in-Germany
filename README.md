@@ -1,4 +1,6 @@
-# Introduction
+# Impact of Weather on Voter Bahavior in Germany 
+
+## Overview
 
 The project Impact of weather on voter behavior in Germany investigates whether and to what extent the weather has an influence on voting behavior in Germany. For this purpose, the Bundestag election on September 26, 2021 was analyzed using local weather data.
 
@@ -7,7 +9,52 @@ A higher voter turnout generally leads to more representative election results a
 
 The target group for this work includes election administrators, those responsible for election logistics and political scientists. 
 
-# Dataset Overview
+## Table of Contents
+- [Research Questions](#research-questions)
+- [Hypotheses](#hypotheses)
+- [Project Structure](#project-structure)
+- [Dataset Overview](#dataset-overview)
+- [Installation](#️-installation)
+- [Usage](#usage)
+- [Requirements](#requirements)
+- [Conduct](#conduct)
+- [Contributing](#contributing)
+- [License](#license)
+- [Citation](#citation)
+- [Contact](#contact-via-gitup)
+
+
+## Research Questions
+
+Does local weather influence voter turnout in Germany?<br>
+Are certain weather variables (e.g. temperature, rain, sunshine) more strongly correlated with turnout?
+
+## Hypotheses:
+H1: There is a correlation between the weather and the voter turnout.<br>
+H2: Higher rainfall on election day lower the voter turnout.<br>
+H3: More sunshine hours has a positive effect on the voter turnout.<br>
+H4: Even small lokal variations in temperature influence the voter turnout. 
+
+## Project Structure 
+The project is organized as follows:<br>
+impact-of-weather-on-voter-turnout<br>
+├── venv/ # Local Python virtual environment<br>
+├── bin/ # Python files containing all code (processing, analysis)<br>
+├── data/ # Weather and election data as csv Files<br>
+├── docs/ # Planing, workflow, requirements.md (functional and non-functional)<br>
+├── results/ # Plots and csv file with correlation values<br>
+├── tests/<br>
+├── workflow # Snakefile<br>
+├── CITATION.cff<br>
+├── CONDUCT.md<br>
+├── CONTRIBUTING.md<br>
+├── LICENSE<br>
+├── README.md # Project overview and usage instructions<br>
+├── requirements.txt # Required Python packages<br>
+
+
+
+## Dataset Overview
 
 We concentrated on two datasets to perform the analysis, and they are as follows:
 
@@ -19,6 +66,7 @@ Local Weather Dataset: Secondly, we gathered the local weather data from the Deu
 
 Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
 
+<<<<<<< HEAD
 # Research Question
 
 Does local weather influence voter turnout in Germany?
@@ -44,6 +92,11 @@ According to the visualization, the important parameters for the German Bundesta
 [CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
 
 # ⚙️ Installation:
+=======
+
+
+## ⚙️ Installation:
+>>>>>>> 15ee78ba7e5be0f391c3cd4bbeff2ce914fbe072
 MacOS
 Linux
 Windows
@@ -77,9 +130,9 @@ pip install -r requirements.txt
 ```
  
 
-# Tools
+## Usage
 
-## 1. Read in
+### 1. Read in
 Tool th read in CSV Files and safe them as DataFrames. 
 
 Example:
@@ -87,7 +140,7 @@ Example:
 >>> python bin/read_in.py --input data/dataset_election.csv 
 ```
 
-## 2. Merge Data
+### 2. Merge Data
 
 Tool to combine the voter turnout data with important weather factor data.  
 Example:
@@ -95,7 +148,7 @@ Example:
 >>> python bin/merge_data.py --output data/merged_all.csv
 ```
 
-## 3. Clean Missing Values 
+### 3. Clean Missing Values 
 
 Tool to transform missing values (-999) to NaN.
 Example:
@@ -104,7 +157,7 @@ Example:
 >>> python bin/clean_missing.py --input data/merged_all.csv --output data/cleaned_data.csv
 ```
 
-## 4. Calculate Correlation
+### 4. Calculate Correlation
 
 Tool to calculate correlations between weather factors and voter turnout.
 Example:
@@ -113,7 +166,7 @@ Example:
 >>> python bin/calculate_correlation.py --input data/cleaned_data.csv --output results/correlation.csv
 ``` 
 
-## 5. Visualize Results 
+### 5. Visualize Results 
 
 Tool to visualize the correlation between weather factors and voter turnout.
 Example:
@@ -122,7 +175,7 @@ Example:
 >>> python bin/visualize.py --input data/cleaned_data.csv --output results/plots/
 ``` 
 
-## 6. Report all Weather Factors with no Correlation Value
+### 6. Report all Weather Factors with no Correlation Value
 
 Tool to get all weather factors reported for which there was no correlation calculation
 Example:
@@ -130,10 +183,33 @@ Example:
 >>> python bin/unusable_weather_factors.py --input data/cleaned_data.csv --output results/unusable_weather_factors.csv
 ```
 
-# Note: DWD weather abbreviation
+## Note: DWD weather abbreviation
 
-RSK = Precipitation depth (1 = 1mm = 1l/square meter).  
-TMK = Temperature in Celcius. 
+RSK = Precipitation depth (1 = 1mm = 1l/square meter). <br>
+TMK = Temperature in Celcius. <br>
 SDK = Hours of Sunshine.
+
+## Requirements
+[requirements.md] (https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/docs/requirements.md?ref_type=heads)
+
+## Conduct
+[CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
+
+## Contributing
+[CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
+
+## License
+[LICENSE] (https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/LICENSE?ref_type=heads)
+
+## Citation 
+[CITATION.cff](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CITATION.cff?ref_type=heads) 
+
+## Contact via GitUP
+Annegret Hartmann: @hartmann13 (https://gitup.uni-potsdam.de/hartmann13)<br>
+Ikhtiar Ahmed: @ahmed16 (https://gitup.uni-potsdam.de/ahmed16)<br>
+Caroline Trendelenburg: @trendelenb (https://gitup.uni-potsdam.de/trendelenb)
+
+
+
 
 

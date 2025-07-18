@@ -1,21 +1,35 @@
+# Requirement Specification 
+
 ## Functional Requirements 
 
 We want to analyze what influence weather conditions have on voter turnout in Germany. 
 
-The following UML Activity Diagram shows an abstract description of the data analysis workflow: 
-![Active Diagram](./ActiveDiagram.png)
+### Data Analyse Workflow
+The following Activity Diagram shows an abstract description of the data analysis workflow: 
+![Active Diagram](./active_diagram.png)
 
-For each node in the activity diagram, the following table lists the  input, output, and implementation (using packages or own implementation).
-![Active Workflow Table](./ActiveWorkflowTable.pdf)
+For each node in the Activity Diagram, the following table lists the  input, output, and implementation (using packages or own implementation).
+![Active Workflow Table](./CLIs_and_own_implementations.pdf)
 
 ## Non-Functional Requirements 
 
-- The system must be compatible with common operating systems (Windows, macOS, Linux) and require a Python version ≥ 3.10.
-- the system must be clearly divided into an analysis part and a visualization part.
+### Compatibility 
+- The system must be compatible with Windows, macOS, Linux. 
+- Python version ≥ 3.10 is required.
+
+### Architecture 
+- the system must be clearly divided into two parts
+    - **Analysis Part**: Responsable for data processing and calculations. 
+    - **Visualization Part**: Presents analysis results in a user-friendly format. 
+
+### Data Handling 
 - All processed data must be automatically deleted after use.
-- Analysis results must be presented clearly and understandably for end users.
-- In the event of analysis errors, no results will be displayed.
+- No storage of personal informations. 
+
+### Useability 
+- Analysis results must be presented understandable to end users.
 - The system will be made publicly available.
+
 
 
 
