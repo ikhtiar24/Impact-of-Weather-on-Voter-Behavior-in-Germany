@@ -82,6 +82,20 @@ Sunshine Hours(SDK): The data point observations for sunshine hours likewise sho
 According to the visualization, the important parameters for the German Bundestag Election 2021, such as average temperature, total rainfall, and sunshine hours, are not highly connected with voter turnout. The turnout percentage remained reasonably consistent despite the variations in weather conditions. 
 
 
+# Run the workflow:
+
+The complete data analysis process was executed using the Snakemake file. Make sure you are in the root directory of the project, which includes bin/, data/, and workflow/.
+
+1. Open the terminal or VS code integrated terminal
+2. Activate the Python/Conda environment where Snakemake and all project dependencies are installed such as numpy, pandas, matplotlib, pulp etc.
+3. Execute the full workflow use this command line: snakemake --snakefile workflow/Snakefile
+4. Execute with multiple CPU cores (for faster processing), use this command line: snakemake --snakefile workflow/Snakefile cores 4 
+
+
+After successful execution, find the results in the results/ and plots/directories within the project root. 
+
+
+
 [CONDUCT.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONDUCT.md?ref_type=heads)
 
 [CONTRIBUTING.md](https://gitup.uni-potsdam.de/trendelenb/impact-of-weather-on-voter-behavior-in-germany/-/blob/main/CONTRIBUTING.md?ref_type=heads)
