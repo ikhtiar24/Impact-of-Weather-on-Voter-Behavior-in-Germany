@@ -66,11 +66,6 @@ Local Weather Dataset: Secondly, we gathered the local weather data from the Deu
 
 Source of the data: {https://opendata.dwd.de/climate_environment/CDC/}
 
-<<<<<<< HEAD
-# Research Question
-
-Does local weather influence voter turnout in Germany?
-
 
 
 # Interpretation of Results
