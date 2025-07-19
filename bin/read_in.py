@@ -32,9 +32,18 @@ def read_in(input_file, sep=";"):
     
     return df
 
-if __name__ == "__main__":
+
+def main():
+    """
+    Command-line interface for reading a CSV file into a DataFrame.
+    Parses --input argument, reads the CSV, and stores the DataFrame in 'df'.
+    """
     parser = argparse.ArgumentParser(description="Read in a CSV file.")
     parser.add_argument("--input", required=True, help="Path to the input file (CSV)")
     args = parser.parse_args()
 
     df = read_in(args.input, sep=",")
+
+
+if __name__ == "__main__":
+    main()
