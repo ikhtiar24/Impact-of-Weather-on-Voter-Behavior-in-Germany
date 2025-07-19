@@ -83,6 +83,11 @@ def test_corr(df, target, usable):
     return correlation
 
 def main():
+    """
+    Command-line interface for calculating correlations between weather factors
+    and voter turnout. Reads a cleaned CSV file, filters usable weather columns,
+    computes correlations and saves the result to a specified output CSV file.
+    """
     parser = argparse.ArgumentParser(
         description="Calculate correlations between weather factors and voter turnout using a cleaned dataset."
     )
