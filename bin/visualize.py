@@ -72,9 +72,22 @@ def visualize(df, weather, target, output_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True)
-    parser.add_argument("--output", required=True)
+    parser = argparse.ArgumentParser(
+        description="Create scatter plots with regression lines to visualize the correlation between weather factors and voter turnout."
+    )
+
+    parser.add_argument(
+        "--input",
+        required=True,
+        help="Path to the input CSV file with merged weather and election data."
+    )
+
+    parser.add_argument(
+        "--output",
+        required=True,
+        help="Directory where the output plots (PNG files) will be saved."
+    )
+
     args = parser.parse_args()
 
     df = read_in(args.input, sep=",")
@@ -84,6 +97,7 @@ def main():
     usable, _ = relevant_columns(df, weather, target)
     for factor in usable:
         visualize(df, factor, target, args.output)
+
 
 if __name__ == "__main__":
     main()
