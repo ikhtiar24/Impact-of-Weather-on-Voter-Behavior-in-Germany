@@ -40,6 +40,10 @@ def clean_missing(df, output_file):
     return cleaned_df
 
 def main():
+    """
+    Command-line interface for cleaning missing values (-999 → NaN) in weather columns.
+    Parses --input and --output arguments, reads the input CSV, and writes the cleaned result.
+    """
     parser = argparse.ArgumentParser(description="Clean missing values (-999 → NaN)")
     parser.add_argument("--input", required=True, help="Input CSV file")
     parser.add_argument("--output", required=True, help="Output CSV file")
