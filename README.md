@@ -79,19 +79,19 @@ To run this project, the following requirements must be met:
 
 1. Software: 
 
-Python: The programming language used for all analytic scripts (version 3.x recommended).
-Snakemake: Workflow management system
-Git: For version control and managing the project repository
+Python: The programming language used for all analytic scripts (version 3.x recommended) <br> 
+Snakemake: Workflow management system <br> 
+Git: For version control and managing the project repository <br> 
 
 
 2. Python Libraries:
 
-numpy: For numeric operations
-pandas: For analyzing and manipulating data
-matplotlib: For visualizations.
-scipy.stats: used for statistical functions
-argparse: For handling command-line arguments
-Pulp: An optimization library that Snakemake uses internally
+numpy: For numeric operations <br> 
+pandas: For analyzing and manipulating data <br> 
+matplotlib: For visualizations. <br> 
+scipy.stats: used for statistical functions <br> 
+argparse: For handling command-line arguments <br> 
+Pulp: An optimization library that Snakemake uses internally 
 
 
 3. Hardware:
@@ -212,6 +212,30 @@ The complete data analysis process was executed using the Snakemake file. Make s
 
 
 After successful execution, find the results in the results/ and plots/directories within the project root. 
+
+
+## Installation of Snakemake 
+
+Here is the step by step instructions: 
+
+Method 1: Install using Conda
+
+Install Conda if you don't have <br> 
+Download the installer for your operating system such as Windows, macOS, Linux <br> 
+Open your Terminal or Anaconda prompt from the start menu in your operating system <br> 
+Then create a Conda environment for the project using this command: conda create -n snakemake_env <br> 
+Finally, activate the new Conda envrionment using this command: conda activate snakemake_env <br> 
+Install other project dependencies such as Pulp and argparse <br> 
+For the verification of installation check using this command: snakemake --version
+
+Method 2: Install using Pip
+
+Navigate the project root directory and check the python version by using command: python --version <br>
+Open Command Prompt or PowerShell on your operating system (Windows)
+Install Snakemake using this command: pip install snakemake
+Install other project dependencies such as Pulp and argparse <br> 
+For the verification of installation check using this command: snakemake --version
+
 
 
 ## Interpretation of Results
