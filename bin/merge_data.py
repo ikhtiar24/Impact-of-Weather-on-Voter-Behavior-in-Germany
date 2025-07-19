@@ -95,8 +95,7 @@ def main():
 
     # create a csv file with prepared data
     merged.to_csv(args.output, index=False)
-    print(f"data have been successfully exported to the data file as '{args.output}")
-
+    print(f"data have been successfully exported to the data file as '{args.output}'")
 
 
 if __name__ == "__main__":

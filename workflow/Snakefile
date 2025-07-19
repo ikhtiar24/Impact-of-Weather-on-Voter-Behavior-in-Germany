@@ -7,9 +7,9 @@ rule all:
         "data/merged_all.csv",
         "results/correlation_with_turnout.csv",
         "results/unusable_weather_factors.csv",
-        "plots/TMK_and_voter_turnout_pct.png",
-        "plots/RSK_and_voter_turnout_pct.png",
-        "plots/SDK_and_voter_turnout_pct.png"
+        "results/plots/TMK_and_voter_turnout_pct.png",
+        "results/plots/RSK_and_voter_turnout_pct.png",
+        "results/plots/SDK_and_voter_turnout_pct.png"
 
 # Rule: merge_data
 # Purpose: Combines weather data from multiple cities with election data.
@@ -83,10 +83,10 @@ rule visualize_data:
     output:
         # 'expand' is used here because visualize.py generates multiple files
         # based on a list of weather factors (TMK, RSK, SDK).
-        expand("plots/{weather_factor}_and_voter_turnout_pct.png", weather_factor=["TMK", "RSK", "SDK"])
+        expand("results/plots/{weather_factor}_and_voter_turnout_pct.png", weather_factor=["TMK", "RSK", "SDK"])
     params:
         # The visualize.py script expects an output directory, not a specific file name.
-        output_dir="plots/"
+        output_dir="results/plots/"
     shell:
         # Executes the visualize.py script.
         # The script itself handles creating the 'plots/' directory if it doesn't exist.

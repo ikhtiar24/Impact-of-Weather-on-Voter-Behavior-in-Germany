@@ -23,7 +23,7 @@ For each node in the Activity Diagram, the following table lists the  input, out
     - **Visualization Part**: Presents analysis results in a user-friendly format. 
 
 ### Data Handling 
-- All processed data must be automatically deleted after use.
+- Processed data is handled exclusively on the user’s local machine. No processed data is stored or transmitted to external servers.
 - No storage of personal informations. 
 
 ### Useability 

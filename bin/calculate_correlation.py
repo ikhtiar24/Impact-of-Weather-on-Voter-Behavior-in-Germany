@@ -42,20 +42,19 @@ def relevant_columns(df, weather_factors, target):
     # only calculate correlation if there are at least 5 values in the weather varibale
     min_value = 5
     usable_weather_col = []
-    unusable_weater_col = []
+    unusable_weather_col = []
     for weather in weather_factors:
         valid_pair = df[[weather, target]].dropna()
         if len(valid_pair)  < min_value:
             print(f"WARNING: correlation between {weather} and voter turnout couldn't be calculate. To many missing values in {weather}")
-            unusable_weater_col.append(weather)
+            unusable_weather_col.append(weather)
         else:
-            usable_weather_col.append(weather)
-            print(f"correlation between {weather} and voter turnout could be calculated")    
+            usable_weather_col.append(weather)  
     
     if len(usable_weather_col) == 0:
         raise ValueError("No weather factor had enough values to calculate correlation")
 
-    return usable_weather_col, unusable_weater_col
+    return usable_weather_col, unusable_weather_col
 
 
 def test_corr(df, target, usable):
@@ -102,7 +101,7 @@ def main():
     result_df = correlation.to_frame(name="correlation_with_turnout")
     result_df.index.name = "weather_variable"
     result_df.to_csv(args.output)
-    print(f"correlation saved in {args.output}")
+    print(f"Correlation values saved in {args.output}")
 
 if __name__ == "__main__":
     main()

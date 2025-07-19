@@ -208,7 +208,7 @@ The complete data analysis process was executed using the Snakemake file. Make s
 1. Open the terminal or VS code integrated terminal
 2. Activate the Python/Conda environment where Snakemake and all project dependencies are installed such as numpy, pandas, matplotlib, pulp etc.
 3. Execute the full workflow use this command line: snakemake --snakefile workflow/Snakefile
-4. Execute with multiple CPU cores (for faster processing), use this command line: snakemake --snakefile workflow/Snakefile cores 4 
+4. Execute with multiple CPU cores (for faster processing), use this command line: snakemake --snakefile workflow/Snakefile --cores 4
 
 
 After successful execution, find the results in the results/ and plots/directories within the project root. 

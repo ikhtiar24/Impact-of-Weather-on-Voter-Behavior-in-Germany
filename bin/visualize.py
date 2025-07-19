@@ -100,7 +100,8 @@ def visualize(df, weather, target, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     plt.savefig(os.path.join(output_dir, filename))
     plt.close()
-    print(f"Saved: {filename}")
+    print(f"Saved! You can find the plot here: {os.path.join(output_dir, filename)}")
+
 
 def main():
     parser = argparse.ArgumentParser()

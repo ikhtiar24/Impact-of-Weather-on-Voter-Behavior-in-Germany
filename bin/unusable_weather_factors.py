@@ -47,7 +47,7 @@ def main():
     result_df.index.name = "weather_variable"
     result_df.to_csv(args.output) 
 
-    print(f"Weather functions for which no correlation could be calculated saved in {args.output}")
+    print(f"Weather variables for which no correlation could be calculated saved in {args.output}")
 
 if __name__ == "__main__":
 
