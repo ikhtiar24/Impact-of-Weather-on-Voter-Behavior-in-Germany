@@ -82,11 +82,23 @@ def test_corr(df, target, usable):
     correlation = corr_df[target].drop(labels=[target])
     return correlation
 
-
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True)
-    parser.add_argument("--output", required=True)
+    parser = argparse.ArgumentParser(
+        description="Calculate correlations between weather factors and voter turnout using a cleaned dataset."
+    )
+
+    parser.add_argument(
+        "--input",
+        required=True,
+        help="Path to the input CSV file containing weather and voter turnout data (e.g. merged dataset)."
+    )
+
+    parser.add_argument(
+        "--output",
+        required=True,
+        help="Path to the output CSV file where correlation results will be saved."
+    )
+
     args = parser.parse_args()
 
     df = read_in(args.input, sep=",")
@@ -94,14 +106,14 @@ def main():
     target = "voter_turnout_pct"
 
     usable, _ = relevant_columns(df, weather_factors, target)
-
     correlation = test_corr(df, target, usable)
 
-    # export 
     result_df = correlation.to_frame(name="correlation_with_turnout")
     result_df.index.name = "weather_variable"
     result_df.to_csv(args.output)
+
     print(f"Correlation values saved in {args.output}")
+
 
 if __name__ == "__main__":
     main()
