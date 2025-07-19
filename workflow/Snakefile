@@ -55,7 +55,7 @@ rule calculate_correlation:
     input:
         "data/cleaned_merged_data.csv"
     output:
-        "results/correlation_with_turnout.csv" # This is the output file name
+        "results/correlation.csv" # This is the output file name
     shell:
         # Executes the calculate_correlation.py script.
         "python bin/calculate_correlation.py --input {input} --output {output}"

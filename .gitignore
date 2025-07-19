@@ -1,4 +1,6 @@
 venv
-.snakemake/
+.venv
+.snakemake
 .vscode
+.pytest_cache
 __pycache__
