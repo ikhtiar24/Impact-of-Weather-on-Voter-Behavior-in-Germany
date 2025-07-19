@@ -1,6 +1,7 @@
 venv
 .venv
 .snakemake
+.snakemake/metadata
 .vscode
 .pytest_cache
 __pycache__
