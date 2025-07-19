@@ -47,6 +47,7 @@ def test_no_replace_needed_bc_no_weather_column(tmp_path):
     assert cleaned4["T"].isna().sum() == 0
     assert (cleaned4["T"] == -99).sum() == 0 
 
+
 def test_empty(tmp_path):
     df5 = pd.DataFrame({
     "RSK": []
