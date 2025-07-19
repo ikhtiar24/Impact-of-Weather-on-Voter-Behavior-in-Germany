@@ -77,6 +77,12 @@ def merging(weather_to_city):
     return merged
 
 def main():
+    """
+    Command-line interface for merging weather data with election turnout data.
+    Reads weather data for multiple cities, filters for the election day, and joins it
+    with voter turnout information. The merged dataset is saved as a CSV file
+    to the specified output path.
+    """
     parser = argparse.ArgumentParser(description="Merge weather data with elecion data.")
     parser.add_argument("--output", required=True, help="Path to the output file")
     args = parser.parse_args()
