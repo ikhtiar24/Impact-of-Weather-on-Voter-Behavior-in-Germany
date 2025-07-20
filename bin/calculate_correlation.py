@@ -12,7 +12,7 @@ sys.path.insert(
             os.path.dirname(__file__),
             '..')))
 
-from bin.read_in import read_in
+from bin.read_in import read_in  # noqa: E402
 
 
 def relevant_columns(df, weather_factors, target):

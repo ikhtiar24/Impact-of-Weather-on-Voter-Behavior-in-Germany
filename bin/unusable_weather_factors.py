@@ -13,8 +13,8 @@ sys.path.insert(
             os.path.dirname(__file__),
             '..')))
 
-from bin.read_in import read_in
-from bin.calculate_correlation import relevant_columns
+from bin.read_in import read_in  # noqa: E402
+from bin.calculate_correlation import relevant_columns  # noqa: E402
 
 
 def weather_factor_with_no_corr(factor, output_path):

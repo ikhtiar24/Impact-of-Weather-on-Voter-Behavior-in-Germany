@@ -14,8 +14,8 @@ sys.path.insert(
             os.path.dirname(__file__),
             '..')))
 
-from bin.calculate_correlation import relevant_columns
-from bin.read_in import read_in
+from bin.calculate_correlation import relevant_columns  # noqa: E402
+from bin.read_in import read_in  # noqa: E402
 
 # Pretty labels for axes
 pretty_labels = {
