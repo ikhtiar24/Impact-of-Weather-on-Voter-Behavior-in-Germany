@@ -18,7 +18,8 @@ from bin.read_in import read_in
 
 def merging(weather_to_city):
     """
-    Merges weather and voter turnout data for one election day of multiple ccities.
+    Merges weather and voter turnout data for one election day of
+    multiple cities.
 
     Parameters
     ----------
@@ -28,7 +29,8 @@ def merging(weather_to_city):
     Returns
     -------
     pandas.DataFrame
-        DataFrame containing voter turnout and weather data per district for given election day.
+        DataFrame containing voter turnout and weather data per district
+        for given election day.
     """
 
     election_day = 20210926  # election_day (as integer)
@@ -42,8 +44,7 @@ def merging(weather_to_city):
 
             # missing informations about the date in weather file
             if "MESS_DATUM" not in df.columns:
-                print(
-                    f"WARNING: column with measurement date is missing in {weather_file}")
+                print(f"WARNING: no date column in:\n{weather_file}")
                 continue
 
             # only data from the election day
@@ -52,7 +53,7 @@ def merging(weather_to_city):
             # missing measurement data on election day
             if df.empty:
                 print(
-                    f"WARNING: no measurement data for election day {weather_file}")
+                    f"WARNING: no data for election day {weather_file}")
                 continue
 
             # rain, temperature, hours with sun-shine
@@ -80,8 +81,7 @@ def merging(weather_to_city):
     missing_districts = set(
         weather_df["district_name"]) - set(election_df["district_name"])
     if missing_districts:
-        print(f"WARNING: the following districts are missing in the election data: {
-              district_name}")
+        print(f"WARNING: missing districts in election data: {district_name}")
 
     merged = pd.merge(weather_df, election_df, on="district_name")
     return merged
@@ -90,9 +90,9 @@ def merging(weather_to_city):
 def main():
     """
     Command-line interface for merging weather data with election turnout data.
-    Reads weather data for multiple cities, filters for the election day, and joins it
-    with voter turnout information. The merged dataset is saved as a CSV file
-    to the specified output path.
+    Reads weather data for multiple cities, filters for the election day,
+    and joins it with voter turnout information. The merged dataset is saved
+    as a CSV file to the specified output path.
     """
     parser = argparse.ArgumentParser(
         description="Merge weather data with elecion data.")
@@ -116,9 +116,7 @@ def main():
 
     # create a csv file with prepared data
     merged.to_csv(args.output, index=False)
-    print(
-        f"data have been successfully exported to the data file as '{
-            args.output}'")
+    print(f"Data successfully exported to file: '{args.output}'")
 
 
 if __name__ == "__main__":
