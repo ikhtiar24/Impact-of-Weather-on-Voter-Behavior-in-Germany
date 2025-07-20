@@ -49,6 +49,7 @@ def main():
     args = parser.parse_args()
 
     df = read_in(args.input, sep=",")
+    return df
 
 
 if __name__ == "__main__":
