@@ -72,6 +72,11 @@ def visualize(df, weather, target, output_dir):
 
 
 def main():
+    """
+    Command-line interface for visualizing weather and turnout data.
+    
+    Parses arguments, loads data, and generates correlation plots.
+    """
     parser = argparse.ArgumentParser(
         description="Create scatter plots with regression lines to visualize the correlation between weather factors and voter turnout."
     )
