@@ -1,46 +1,62 @@
-
 import pandas as pd
-import numpy as np 
+import numpy as np
 import os
 import sys
 import pytest
 
 # Add path to the project root
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..'
+        )
+    )
+)
+
 from bin.calculate_correlation import relevant_columns
 
 
-
 def test_unusable_TMK():
-    """Test that TMK is unusable due to insufficient data for correlation."""
+    """TMK is unusable due to too few values."""
     df1 = pd.DataFrame({
         "TMK": [19, 20, 23, 22, np.nan],
         "target": [60, 63, 62, 70, 62]
     })
-    with pytest.raises(ValueError, match="No weather factor had enough values to calculate correlation"):
+    with pytest.raises(
+        ValueError,
+        match="No weather factor had enough values"
+    ):
         relevant_columns(df1, ["TMK"], "target")
 
+
 def test_usable_RSK():
-    """Test that RSK is usable for correlation with sufficient data."""
+    """RSK is usable with enough data."""
     df2 = pd.DataFrame({
         "RSK": [1, 2, 4, 3, 5],
         "target": [60, 63, 62, 70, 62]
     })
     usable, unusable = relevant_columns(df2, ["RSK"], "target")
     assert "RSK" in usable
-    assert "RSK" not in unusable        
+    assert "RSK" not in unusable
+
 
 def test_empty_TMK():
-    """Test that TMK is unusable due to being completely empty."""
+    """TMK is unusable when entirely empty."""
     df3 = pd.DataFrame({
         "TMK": [np.nan, np.nan, np.nan, np.nan, np.nan],
         "target": [60, 63, 62, 70, 62]
     })
-    with pytest.raises(ValueError, match="No weather factor had enough values to calculate correlation"):
+    with pytest.raises(
+        ValueError,
+        match="No weather factor had enough values"
+    ):
         relevant_columns(df3, ["TMK"], "target")
 
+
 def test_mixed_factor_categories():
-    """Test that RSK is unusable due to mixed factor categories and TMK is usable."""
+    """RSK unusable, TMK usable due to mixed values."""
     df4 = pd.DataFrame({
         "RSK": [1, np.nan, 4, np.nan, 5],
         "target": [60, 63, 62, 70, 62],
@@ -50,15 +66,15 @@ def test_mixed_factor_categories():
     assert "RSK" in unusable
     assert "TMK" in usable
 
+
 def test_missing_target():
-    """Test that an error is raised if the target column is missing."""
+    """Raise error if target column is missing."""
     df5 = pd.DataFrame({
         "TMK": [19, 20, 23, 22, 25],
         "RSK": [1, 2, 3, 4, 5]
     })
-    with pytest.raises(ValueError, match="Target column 'target' is missing"):
-        relevant_columns(df5, ["TMK", "RSK"], "target")   
-
-
-
-
+    with pytest.raises(
+        ValueError,
+        match="Target column 'target' is missing"
+    ):
+        relevant_columns(df5, ["TMK", "RSK"], "target")

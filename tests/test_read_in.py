@@ -4,7 +4,15 @@ import os
 import sys
 
 # Add path to the project root
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..'
+        )
+    )
+)
 
 from bin.read_in import read_in
 
@@ -21,15 +29,20 @@ def test_read_filled_csv(tmp_path):
 
     df = read_in(str(file_path))
     assert not df.empty
-    assert list(df.columns) == ["RSK", "TMK", "SDK", "voter_turnout_pct"]
+    assert list(df.columns) == [
+        "RSK", "TMK", "SDK", "voter_turnout_pct"
+    ]
 
 
 def test_read_empty_csv(tmp_path):
     """Test reading a CSV file that is completely empty."""
     file_path = tmp_path / "empty.csv"
-    file_path.write_text("")  # create truly empty file
+    file_path.write_text("")
 
-    with pytest.raises(ValueError, match="The file is empty or contains no readable columns."):
+    with pytest.raises(
+        ValueError,
+        match="The file is empty or contains no readable columns."
+    ):
         read_in(str(file_path))
 
 
@@ -40,7 +53,7 @@ def test_read_nonexistent_file():
 
 
 def test_read_csv_with_comma_separator(tmp_path):
-    """Test reading a CSV with comma as separator using the sep parameter."""
+    """Test reading a CSV with comma as separator using sep parameter."""
     file_path = tmp_path / "comma.csv"
     pd.DataFrame({
         "col1": [10],
@@ -49,4 +62,3 @@ def test_read_csv_with_comma_separator(tmp_path):
 
     df = read_in(str(file_path), sep=",")
     assert list(df.columns) == ["col1", "col2"]
-
