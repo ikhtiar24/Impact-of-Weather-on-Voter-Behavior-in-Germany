@@ -27,6 +27,13 @@ def weather_factor_with_no_corr(factor, output_path):
 
 
 def main():
+    """
+    Command-line interface to identify and report unusable weather factors 
+    that lack sufficient data for correlation analysis.
+
+    Reads a merged dataset, detects weather variables that cannot be used 
+    for correlation, logs them to a text report, and saves them in a CSV file.
+    """
     parser = argparse.ArgumentParser(description="Report unusable weather factors.")
     parser.add_argument("--input", required=True, help="Path to the input file (CSV)")
     parser.add_argument("--output", required=True, help="Path to the output file")
