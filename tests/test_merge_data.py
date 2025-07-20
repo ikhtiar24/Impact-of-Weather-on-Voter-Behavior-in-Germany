@@ -10,6 +10,7 @@ from bin.merge_data import merging
 
 
 def test_all_weather_data_empty(tmp_path):
+    """Test merging when all weather data is empty."""
     weather_file = tmp_path / "weather.csv"
     pd.DataFrame(columns=["RSK", "SDK", "TMK", "MESS_DATUM"]).to_csv(weather_file, index=False)
 
@@ -25,6 +26,7 @@ def test_all_weather_data_empty(tmp_path):
 
 
 def test_missing_MESS_DATUM(tmp_path):
+    """Test merging when MESS_DATUM column is missing in weather data."""
     weather_file = tmp_path / "weather.csv"
     pd.DataFrame({
         "RSK": [1],
