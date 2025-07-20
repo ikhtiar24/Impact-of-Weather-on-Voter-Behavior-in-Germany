@@ -1,16 +1,22 @@
+from bin.read_in import read_in
 import pandas as pd
 import argparse
 import os
 import sys
 
 # Add path to the project root
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from bin.read_in import read_in
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..')))
+
 
 def merging(weather_to_city):
     """
-    Merges weather and voter turnout data for one election day of multiple ccities. 
-    
+    Merges weather and voter turnout data for one election day of multiple ccities.
+
     Parameters
     ----------
     weather_to_city: dict
@@ -22,19 +28,19 @@ def merging(weather_to_city):
         DataFrame containing voter turnout and weather data per district for given election day.
     """
 
-
     election_day = 20210926  # election_day (as integer)
     all_merged = []
 
-    # structure data for each city 
+    # structure data for each city
     for weather_file, district_name in weather_to_city.items():
         try:
-            # reads weather file  
+            # reads weather file
             df = read_in(weather_file)
 
             # missing informations about the date in weather file
             if "MESS_DATUM" not in df.columns:
-                print(f"WARNING: column with measurement date is missing in {weather_file}")
+                print(
+                    f"WARNING: column with measurement date is missing in {weather_file}")
                 continue
 
             # only data from the election day
@@ -42,26 +48,25 @@ def merging(weather_to_city):
 
             # missing measurement data on election day
             if df.empty:
-                print(f"WARNING: no measurement data for election day {weather_file}")
+                print(
+                    f"WARNING: no measurement data for election day {weather_file}")
                 continue
 
             # rain, temperature, hours with sun-shine
             df = df[["RSK", "TMK", "SDK"]]
-            # city in a column  
+            # city in a column
             df["district_name"] = district_name
-            # add to list 
+            # add to list
             all_merged.append(df)
 
         except Exception:
             print(f"Warning: Failed to process {weather_file}")
 
-
     # exit when data cannot be loaded
     if not all_merged:
         raise Exception("ERROR: weather data could not be loaded")
 
-
-    # one table with all cities and their weather values on election day 
+    # one table with all cities and their weather values on election day
     weather_df = pd.concat(all_merged, ignore_index=True)
     print(f"weather data loaded and combined")
     print(weather_df)
@@ -69,12 +74,15 @@ def merging(weather_to_city):
     election_df = read_in("data/dataset_election.csv", sep=",")
 
     # warning when district has no election data
-    missing_districts = set(weather_df["district_name"]) - set(election_df["district_name"])
+    missing_districts = set(
+        weather_df["district_name"]) - set(election_df["district_name"])
     if missing_districts:
-        print(f"WARNING: the following districts are missing in the election data: {district_name}")
+        print(f"WARNING: the following districts are missing in the election data: {
+              district_name}")
 
     merged = pd.merge(weather_df, election_df, on="district_name")
     return merged
+
 
 def main():
     """
@@ -83,8 +91,12 @@ def main():
     with voter turnout information. The merged dataset is saved as a CSV file
     to the specified output path.
     """
-    parser = argparse.ArgumentParser(description="Merge weather data with elecion data.")
-    parser.add_argument("--output", required=True, help="Path to the output file")
+    parser = argparse.ArgumentParser(
+        description="Merge weather data with elecion data.")
+    parser.add_argument(
+        "--output",
+        required=True,
+        help="Path to the output file")
     args = parser.parse_args()
 
     # Mapping: Wetterdatei → district_name
@@ -101,7 +113,9 @@ def main():
 
     # create a csv file with prepared data
     merged.to_csv(args.output, index=False)
-    print(f"data have been successfully exported to the data file as '{args.output}'")
+    print(
+        f"data have been successfully exported to the data file as '{
+            args.output}'")
 
 
 if __name__ == "__main__":

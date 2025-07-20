@@ -1,15 +1,20 @@
+from bin.calculate_correlation import relevant_columns
+from bin.read_in import read_in
 import pandas as pd
 import argparse
 import numpy as np
-import matplotlib.pyplot as plt 
-import os 
+import matplotlib.pyplot as plt
+import os
 import sys
 
 # Add project root path so imports work
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..')))
 
-from bin.read_in import read_in
-from bin.calculate_correlation import relevant_columns
 
 # Pretty labels for axes
 pretty_labels = {
@@ -17,6 +22,7 @@ pretty_labels = {
     "RSK": "Rainfall (mm)",
     "SDK": "Sunshine Duration (h)"
 }
+
 
 def visualize(df, weather, target, output_dir):
     """
@@ -36,26 +42,39 @@ def visualize(df, weather, target, output_dir):
 
     data = df[[weather, target]].dropna()
     if data.empty:
-        raise ValueError(f"No usable data available for {weather} and {target}")
+        raise ValueError(f"No usable data available for {
+                         weather} and {target}")
 
     fig, ax = plt.subplots()
 
     # Scatter plot
-    ax.scatter(data[weather], data[target], label="data", alpha=0.6, color="steelblue", edgecolor='black')
+    ax.scatter(
+        data[weather],
+        data[target],
+        label="data",
+        alpha=0.6,
+        color="steelblue",
+        edgecolor='black')
 
     # Regression line
     try:
         coeffs = np.polyfit(data[weather], data[target], 1)
         line = np.poly1d(coeffs)
         x_vals = np.linspace(data[weather].min(), data[weather].max(), 100)
-        ax.plot(x_vals, line(x_vals), label="Regression line", linestyle="-", color="darkblue")
+        ax.plot(
+            x_vals,
+            line(x_vals),
+            label="Regression line",
+            linestyle="-",
+            color="darkblue")
     except Exception as e:
         print(f"ERROR: Couldn't generate regression line for {weather}: {e}")
 
     # Correlation coefficient (r)
     r = np.corrcoef(data[weather], data[target])[0, 1]
     title_weather = pretty_labels.get(weather, weather)
-    ax.set_title(f"Correlation between {title_weather} and Turnout (r = {r:.2f})")
+    ax.set_title(f"Correlation between {
+                 title_weather} and Turnout (r = {r:.2f})")
 
     ax.set_xlabel(title_weather)
     ax.set_ylabel("Voter Turnout (%)")
@@ -68,13 +87,14 @@ def visualize(df, weather, target, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     plt.savefig(os.path.join(output_dir, filename))
     plt.close()
-    print(f"Saved! You can find the plot here: {os.path.join(output_dir, filename)}")
+    print(f"Saved! You can find the plot here: {
+          os.path.join(output_dir, filename)}")
 
 
 def main():
     """
     Command-line interface for visualizing weather and turnout data.
-    
+
     Parses arguments, loads data, and generates correlation plots.
     """
     parser = argparse.ArgumentParser(
