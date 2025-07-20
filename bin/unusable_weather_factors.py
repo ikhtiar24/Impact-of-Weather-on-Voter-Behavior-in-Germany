@@ -16,6 +16,7 @@ sys.path.insert(
 from bin.read_in import read_in
 from bin.calculate_correlation import relevant_columns
 
+
 def weather_factor_with_no_corr(factor, output_path):
     """
     Add excluded weather factors to a report file.
@@ -68,10 +69,7 @@ def main():
     result_df.index.name = "weather_variable"
     result_df.to_csv(args.output)
 
-    print(
-        f"Weather variables for which no correlation could be calculated saved in {args.output}"
-    )
-
+    print(f"Unusable weather factors saved in {args.output}")
 
 
 if __name__ == "__main__":

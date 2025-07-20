@@ -6,7 +6,8 @@ import argparse
 
 def read_in(input_file, sep=";"):
     """
-    Reads a CSV file and transform it to a pandas DataFrame and treats empty strings as NaN.
+    Reads a CSV file and transform it to a pandas DataFrame and treats empty
+    strings as NaN.
 
     Parameters
     ----------

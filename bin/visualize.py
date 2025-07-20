@@ -1,4 +1,4 @@
-"""Visualize correlations between weather and voter turnout as scatter plots."""
+"""Visualize correlations between weather and voter turnout."""
 
 import argparse
 import numpy as np
@@ -27,7 +27,8 @@ pretty_labels = {
 
 def visualize(df, weather, target, output_dir):
     """
-    Generate a scatter plot with a regression line for a weather factor vs. voter turnout.
+    Generate a scatter plot with a regression line for a weather factor
+    vs. voter turnout.
 
     Parameters
     ----------
@@ -99,13 +100,13 @@ def main():
     Parses arguments, loads data, and generates correlation plots.
     """
     parser = argparse.ArgumentParser(
-        description="Create scatter plots with regression lines to visualize the correlation between weather factors and voter turnout."
+        description="Plot weather vs. voter turnout with regression lines."
     )
 
     parser.add_argument(
         "--input",
         required=True,
-        help="Path to the input CSV file with merged weather and election data."
+        help="Path to input CSV file with merged weather and election data."
     )
 
     parser.add_argument(
