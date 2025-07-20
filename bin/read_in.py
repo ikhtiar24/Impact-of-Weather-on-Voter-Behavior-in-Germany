@@ -1,3 +1,5 @@
+"""Read CSV file into pandas DataFrame"""
+
 import pandas as pd
 import argparse
 

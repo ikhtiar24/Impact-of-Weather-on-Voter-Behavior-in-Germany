@@ -1,3 +1,5 @@
+"""Merge weather data from multiple cities with voter turnout data."""
+
 from bin.read_in import read_in
 import pandas as pd
 import argparse

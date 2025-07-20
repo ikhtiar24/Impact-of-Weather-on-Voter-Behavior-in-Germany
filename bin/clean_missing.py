@@ -1,3 +1,5 @@
+"""Clean missing weather values (-999) and export cleaned dataset."""
+
 from bin.read_in import read_in
 import argparse
 import pandas as pd

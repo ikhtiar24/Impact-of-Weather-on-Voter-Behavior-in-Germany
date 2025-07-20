@@ -1,3 +1,5 @@
+"""Identify and report weather factors excluded from correlation analysis."""
+
 from bin.read_in import read_in
 from bin.calculate_correlation import relevant_columns
 import pandas as pd

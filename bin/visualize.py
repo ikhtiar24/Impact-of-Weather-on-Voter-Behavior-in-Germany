@@ -1,3 +1,5 @@
+"""Visualize correlations between weather and voter turnout as scatter plots."""
+
 from bin.calculate_correlation import relevant_columns
 from bin.read_in import read_in
 import pandas as pd

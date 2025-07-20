@@ -1,3 +1,5 @@
+"""Calculate correlations between weather variables and voter turnout."""
+
 from bin.read_in import read_in
 import pandas as pd
 import argparse
