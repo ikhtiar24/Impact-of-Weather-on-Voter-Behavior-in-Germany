@@ -18,7 +18,7 @@ from bin.read_in import read_in
 
 def clean_missing(df, output_file):
     """
-    Replace missing values (-999) with NaN and saves cleaned data to a CSV file.
+    Replace missing values with NaN and saves cleaned data to a CSV file.
 
     Parameters
     ----------
@@ -48,8 +48,9 @@ def clean_missing(df, output_file):
 
 def main():
     """
-    Command-line interface for cleaning missing values (-999 → NaN) in weather columns.
-    Parses --input and --output arguments, reads the input CSV, and writes the cleaned result.
+    Command-line interface for cleaning missing values in weather columns.
+    Parses --input and --output arguments, reads the input CSV, and writes
+    the cleaned result.
     """
     parser = argparse.ArgumentParser(
         description="Clean missing values (-999 → NaN)")
