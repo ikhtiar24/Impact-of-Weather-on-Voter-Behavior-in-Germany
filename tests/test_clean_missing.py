@@ -10,6 +10,8 @@ from bin.clean_missing import clean_missing
 
 
 def test_replace_missing_values(tmp_path):
+    """Test replacing missing values (-999) with NaN in weather data."""
+
     df1 = pd.DataFrame({
     "RSK": [-999, 1, -999, 2, 3, -999]
     })
@@ -19,6 +21,7 @@ def test_replace_missing_values(tmp_path):
     assert (cleaned1["RSK"] == -99).sum() == 0 
 
 def test_only_missing_values(tmp_path):
+    """Test the replacement if one weather data has only missing values."""
     df2 = pd.DataFrame({
     "RSK": [-999, -999, -999, -999]
     })
@@ -29,6 +32,7 @@ def test_only_missing_values(tmp_path):
     
 
 def test_no_replace_needed(tmp_path):
+    """Test that no replacement occurs if there are no missing values."""
     df3 = pd.DataFrame({
     "RSK": [1, 1, 4, 2, 3, 0]
     })
@@ -39,6 +43,7 @@ def test_no_replace_needed(tmp_path):
 
 
 def test_no_replace_needed_bc_no_weather_column(tmp_path):
+    """Test that no replacement occurs if there is no weather column."""
     df4 = pd.DataFrame({
     "T": [1, 1, 4, 2, 3, 0, -999]
     })
@@ -49,6 +54,7 @@ def test_no_replace_needed_bc_no_weather_column(tmp_path):
 
 
 def test_empty(tmp_path):
+    """Test that an empty DataFrame is handled correctly."""
     df5 = pd.DataFrame({
     "RSK": []
     })

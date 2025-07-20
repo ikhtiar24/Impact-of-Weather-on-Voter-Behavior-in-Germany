@@ -1,8 +1,5 @@
 """Visualize correlations between weather and voter turnout as scatter plots."""
 
-from bin.calculate_correlation import relevant_columns
-from bin.read_in import read_in
-import pandas as pd
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,6 +14,8 @@ sys.path.insert(
             os.path.dirname(__file__),
             '..')))
 
+from bin.calculate_correlation import relevant_columns
+from bin.read_in import read_in
 
 # Pretty labels for axes
 pretty_labels = {

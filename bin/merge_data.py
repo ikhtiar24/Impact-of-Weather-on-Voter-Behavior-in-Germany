@@ -1,6 +1,5 @@
 """Merge weather data from multiple cities with voter turnout data."""
 
-from bin.read_in import read_in
 import pandas as pd
 import argparse
 import os
@@ -13,6 +12,8 @@ sys.path.insert(
         os.path.join(
             os.path.dirname(__file__),
             '..')))
+
+from bin.read_in import read_in
 
 
 def merging(weather_to_city):
@@ -70,7 +71,7 @@ def merging(weather_to_city):
 
     # one table with all cities and their weather values on election day
     weather_df = pd.concat(all_merged, ignore_index=True)
-    print(f"weather data loaded and combined")
+    print("weather data loaded and combined")
     print(weather_df)
     # load and merge voter turnout
     election_df = read_in("data/dataset_election.csv", sep=",")

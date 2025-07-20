@@ -5,7 +5,7 @@
 rule all:
     input:
         "data/merged_all.csv",
-        "results/correlation_with_turnout.csv",
+        "results/correlation.csv",
         "results/unusable_weather_factors.csv",
         "results/plots/TMK_and_voter_turnout_pct.png",
         "results/plots/RSK_and_voter_turnout_pct.png",

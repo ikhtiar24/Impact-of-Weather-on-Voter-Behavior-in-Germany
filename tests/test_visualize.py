@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from bin.visualize import visualize 
 
 def test_plot(tmp_path):
+    """Test that the visualization function creates a plot with the expected data."""
     df = pd.DataFrame({
         "TMK": [20, 22, 25],
         "voter_turnout_pct": [60, 65, 70]
@@ -21,6 +22,8 @@ def test_plot(tmp_path):
     assert os.path.exists(file_path)
 
 def test_empty_data(tmp_path):
+    """Test that the visualization function handles empty data correctly
+    by raising a ValueError."""
     df = pd.DataFrame({
         "TMK": [],
         "voter_turnout_pct": []

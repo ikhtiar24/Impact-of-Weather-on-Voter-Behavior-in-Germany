@@ -1,8 +1,6 @@
 """Clean missing weather values (-999) and export cleaned dataset."""
 
-from bin.read_in import read_in
 import argparse
-import pandas as pd
 import numpy as np
 import os
 import sys
@@ -14,6 +12,8 @@ sys.path.insert(
         os.path.join(
             os.path.dirname(__file__),
             '..')))
+
+from bin.read_in import read_in
 
 
 def clean_missing(df, output_file):

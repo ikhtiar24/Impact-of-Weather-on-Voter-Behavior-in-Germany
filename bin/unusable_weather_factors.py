@@ -1,7 +1,5 @@
 """Identify and report weather factors excluded from correlation analysis."""
 
-from bin.read_in import read_in
-from bin.calculate_correlation import relevant_columns
 import pandas as pd
 import argparse
 import sys
@@ -15,6 +13,8 @@ sys.path.insert(
             os.path.dirname(__file__),
             '..')))
 
+from bin.read_in import read_in
+from bin.calculate_correlation import relevant_columns
 
 def weather_factor_with_no_corr(factor, output_path):
     """

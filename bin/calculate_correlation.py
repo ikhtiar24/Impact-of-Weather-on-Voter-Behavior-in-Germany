@@ -1,7 +1,5 @@
 """Calculate correlations between weather variables and voter turnout."""
 
-from bin.read_in import read_in
-import pandas as pd
 import argparse
 import sys
 import os
@@ -13,6 +11,8 @@ sys.path.insert(
         os.path.join(
             os.path.dirname(__file__),
             '..')))
+
+from bin.read_in import read_in
 
 
 def relevant_columns(df, weather_factors, target):
@@ -124,7 +124,7 @@ def main():
     usable, _ = relevant_columns(df, weather_factors, target)
     correlation = test_corr(df, target, usable)
 
-    result_df = correlation.to_frame(name="correlation_with_turnout")
+    result_df = correlation.to_frame(name="correlation")
     result_df.index.name = "weather_variable"
     result_df.to_csv(args.output)
 
