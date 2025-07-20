@@ -19,7 +19,7 @@ def relevant_columns(df, weather_factors, target):
     """
     Filter only useful columns in weather dataset
 
-    Parameter
+    Parameters
     ---------
     df: DataFrame
         Dataset contains weather and election data.
@@ -33,13 +33,14 @@ def relevant_columns(df, weather_factors, target):
     Returns
     -------
     list of str
-        Weather factor column names that are available and usable in the given DataFrame.
+        Weather factor column names that are available and usable in the given
+        DataFrame.
     """
     # Warn if any columns are completely empty (only NaNs)
     empty_columns = df.columns[df.isna().all()].tolist()
     if empty_columns:
         print(f"WARNING: the column(s) {
-              empty_columns} is/are empty and will not be calculatedbe ignored")
+              empty_columns} is/are empty and will not be calculated")
 
     if target not in df.columns:
         raise ValueError(
@@ -53,8 +54,7 @@ def relevant_columns(df, weather_factors, target):
     for weather in weather_factors:
         valid_pair = df[[weather, target]].dropna()
         if len(valid_pair) < min_value:
-            print(f"WARNING: correlation between {
-                  weather} and voter turnout couldn't be calculate. To many missing values in {weather}")
+            print(f"WARNING: To many missing values in {weather}")
             unusable_weather_col.append(weather)
         else:
             usable_weather_col.append(weather)
@@ -73,16 +73,19 @@ def test_corr(df, target, usable):
     Parameters
     ----------
     df: DataFrame
-        Data Frame with all important Informations about the weather and voter turnout.
+        Data Frame with all important Informations about the weather and
+        voter turnout.
     target: str
         Name of the column representing voter turnout in percent.
     usable: list of str
-        List of all weather factors columns names to calculate correlation with.
+        List of all weather factors columns names to calculate correlation
+        with.
 
     Returns:
     -------
     pandas.Series
-        Series containing correlations between voter turnout and usable weather factors.
+        Series containing correlations between voter turnout and usable
+        weather factors.
 
     """
 
@@ -96,23 +99,24 @@ def test_corr(df, target, usable):
 def main():
     """
     Command-line interface for calculating correlations between weather factors
-    and voter turnout. Reads a cleaned CSV file, filters usable weather columns,
-    computes correlations and saves the result to a specified output CSV file.
+    and voter turnout. Reads a cleaned CSV file, filters usable weather
+    columns, computes correlations and saves the result to a specified output
+    CSV file.
     """
     parser = argparse.ArgumentParser(
-        description="Calculate correlations between weather factors and voter turnout using a cleaned dataset."
+        description="Calculate correlations between weather and voter turnout"
     )
 
     parser.add_argument(
         "--input",
         required=True,
-        help="Path to the input CSV file containing weather and voter turnout data (e.g. merged dataset)."
+        help="Path to the input CSV file (weather and voter turnout data)."
     )
 
     parser.add_argument(
         "--output",
         required=True,
-        help="Path to the output CSV file where correlation results will be saved."
+        help="Path to output CSV with correlation results."
     )
 
     args = parser.parse_args()
@@ -135,4 +139,4 @@ if __name__ == "__main__":
     main()
 
 
-# source .venv/bin/activate um pandas zu aktivieren
+# Activate venv: source .venv/bin/activate
